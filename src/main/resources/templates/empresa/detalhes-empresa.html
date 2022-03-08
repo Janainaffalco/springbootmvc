@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
+<html lang=”pt-br” xmlns:th="http://thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
@@ -8,9 +8,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>| App RH - UC 12 |</title>
-
+<title>App RH</title>
 <!-- Bootstrap -->
+<link href="../../static/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- Bootstrap para o thymeleaf-->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -24,7 +27,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+<title>| App RH - UC 12 |</title>
+
 </head>
+
 
 <body>
 
@@ -44,16 +50,19 @@
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="/">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="/funcionarios">Funcionários</a></li>
-						<li class="nav-item"><a class="nav-link" href="/cadastrarFuncionario">Cadastrar Funcionário</a></li>
-						<li class="nav-item"><a class="nav-link" href="/vagas"><< Listar Vagas>> </a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/cadastrarFuncionario">Cadastrar Funcionário</a></li>
+						<li class="nav-item"><a class="nav-link" href="/vagas">
+								<< Listar Vagas>> </a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/cadastrarVaga"> << Cadastrar Vaga>> </a></li>
 						<li class="nav-item"><a class="nav-link" href="/empresas">
 								<< Listar Empresas>> </a></li>
-						<li class="nav-item"><a class="nav-link" href="/cadastrarEmpresa">
-								<< Cadastrar Empresa>> </a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/cadastrarEmpresa"> << Cadastrar Empresa>> </a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">Sair
 						</a></li>
+
 					</ul>
 				</div>
 			</div>
@@ -61,74 +70,53 @@
 
 	</header>
 
-
-
 	<div class="container">
 
-		<h1>Cadastro de Funcionário</h1>
+		<h1>Detalhes da empresa:</h1>
+		<div th:each="empresa : ${empresa}" class="container">
 
-		<br>
+			<br>
 
-		<th:block th:include="mensagem-validacao"></th:block>
+			<p>
+				<b>Empresa:</b> <span th:text="${empresa.cnpj}"></span>
+			</p>
+			<p>
+				<b>Email:</b> <span th:text="${empresa.email}"></span>
+			</p>
+			<p>
+				<b>Nome:</b> <span th:text="${empresa.nome}"></span>
+			</p>
+			<p>
+				<b>Responsável:</b><span th:text="${empresa.responsavel}"></span>
+			</p>
+			<p>
+				<b>Telefone:</b><span th:text="${empresa.telefone}"></span>
+			</p>
 
-		<form method="post">
+			<br> <br>
 
-			<div class="form-group">
-				<label for=""><b>Nome:</b> </label> <input type="text"
-					class="form-control" value=""
-					placeholder="Insira o nome do funcionário" name="nome" required>
-				<small class="form-text text-muted"><i>* Nome completo.</i></small>
-			</div>
+		</div>
+</div>
 
-			<div class="row">
-				<div class="col">
+		<div style="height: 100px;"></div>
 
-					<div class="form-group">
-						<label for=""><b>Data de nascimento:</b></label> <input
-							type="date" value="" name="data" class="form-control" required />
-						<small class="form-text text-muted"><i>* Dia/Mês/Ano.</i></small>
-					</div>
-				</div>
-				<div class="col">
-					<label for=""><b>E-mail:</b> </label> <input type="text" value=""
-						name="email" class="form-control" placeholder="email@email.com"
-						required />
-				</div>
-
-			</div>
-			<button type="submit" class="btn btn-success">Adicionar
-				Funcionário</button>
-	</div>
-
-	<br>
-	<br>
-
-	</form>
-
-
-	</div>
+		<div class="footer-copyright fixed-bottom bg-dark text-center py-3">
+			<span class="text-light align-middle">| App RH - UC 12 | - ©
+				2022 Copyright: CTM Supervisão de Educação Online</span>
+		</div>
 
 
 
-	<div style="height: 100px;"></div>
 
-	<div class="footer-copyright fixed-bottom bg-dark text-center py-3">
-		<span class="text-light align-middle">| App RH - UC 12 | - ©
-			2022 Copyright: CTM Supervisão de Educação Online</span>
-	</div>
-
-
-
-	<!--JavaScript bootstrap-->
-	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous">
-		
-	</script>
-
-
+		<!--JavaScript bootstrap-->
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous">
+			
+		</script>
 </body>
+
 
 </html>

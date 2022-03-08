@@ -5,15 +5,14 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-
 import com.AppRh.AppRh.models.Empresa;
 
-
-public interface EmpresaRepository extends CrudRepository<Empresa, Long>{
+public interface EmpresaRepository extends CrudRepository<Empresa, Long> {
 	
 	Empresa findById(long id);
-	Empresa findByNome(String nome);
+	List<Empresa> findByNome(String nome);
 	
-	@Query
-	List<Empresa>findByNomeEmpresa(String nomeEmpresa);
+	// Query para a busca
+	@Query(value = "select u from Empresa u where u.nome like %?1%")
+	List<Empresa>findByNomesEmpresa(String nome);
 }

@@ -59,8 +59,7 @@ public class BuscaController {
 		}else if(nome.equals("titulovaga")) {
 			mv.addObject("vagas", vr.findByNome(buscar)); //estava findByNomesVaga
 			
-		}else if(nome.equals("nomeempresa")) {
-			mv.addObject("empresas", er.findByNomeEmpresa(buscar));
+	
 			
 		}else {
 			mv.addObject("funcionarios", fr.findByNomes(buscar));

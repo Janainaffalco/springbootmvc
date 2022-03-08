@@ -47,18 +47,14 @@
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="/">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="/funcionarios">Funcionários</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/cadastrarFuncionario">Cadastrar Funcionário</a></li>
-						<li class="nav-item"><a class="nav-link" href="/vagas">
-								<< Listar Vagas>> </a></li>
+						<li class="nav-item"><a class="nav-link" href="/cadastrarFuncionario">Cadastrar Funcionário</a></li>
+						<li class="nav-item"><a class="nav-link" href="/vagas"><< Listar Vagas>> </a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/cadastrarVaga"> << Cadastrar Vaga>> </a></li>
-											<li class="nav-item"><a class="nav-link" href="/empresas">
-								<< Listar Empresas>>
-							</a></li>
+						<li class="nav-item"><a class="nav-link" href="/empresas">
+								<< Listar Empresas>> </a></li>
 						<li class="nav-item"><a class="nav-link" href="/cadastrarEmpresa">
-								<< Cadastrar Empresa>>
-							</a></li>
+								<< Cadastrar Empresa>> </a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">Sair
 						</a></li>
 					</ul>
@@ -100,16 +96,30 @@
 					</div>
 				</div>
 			</div>
-			
-			
-			
-			
-
-
 		</div>
+		<div class="row">
+			<div class="col">
 
+				<div class="row">
+					<div class="col">
+						<div class="card text-center">
+							<div class="card-header card-title">
+								<h3>Empresas</h3>
+							</div>
+							<div class="card-body">
 
+								<p class="card-text">Módulo responsável pelas empresas
+									parceiras da agência de RH.</p>
+								<a href="/empresas" class="btn btn-primary">Listar Empresas</a> <a
+									href="/cadastrarEmpresa" class="btn btn-success">Cadastrar Empresa</a>
+							</div>
+						</div>
+					</div>
 
+				</div>
+			</div>
+		</div>
+		
 		<!-- 	nova busca -->
 		<div class="row">
 			<div class="col">
@@ -118,9 +128,6 @@
 					<div class="card-header">
 						<h3><< Pesquisar no sistema>></h3>
 					</div>
-
-
-
 					<form class="form-inline" method="post">
 
 
@@ -145,6 +152,7 @@
 									<option value="nomedependente">Dependente</option>
 									<option value="nomecandidato">Candidato</option>
 									<option value="titulovaga">Vaga</option>
+									<option value="tituloempresa">Empresa</option>
 								</select>
 
 
@@ -191,7 +199,11 @@
 										th:href="${(#mvc.url('VC#detalhesVaga').arg(0, vaga.codigo)).build()}"><span
 											th:text="${vaga.nome}"></span></a> - em <i>vagas.</i></td>
 								</tr>
-
+								<tr th:each="empresa : ${empresa}">
+									<td><a
+										th:href="${(#mvc.url('ER#detalhesEmpresa').arg(0, empresa.codigo)).build()}"><span
+											th:text="${empresa.nome}"></span></a> - em <i>empresa.</i></td>
+								</tr>
 
 								<tr th:each="dependente : ${dependentes}">
 									<td><span th:text="${dependente.nome}"></span> - <i>em
@@ -225,47 +237,24 @@
 	<div class="container">
 		<br> <br>
 
-		<div class="row">
-			<div class="col">
-			
-			<div class="row">
-			<div class="col">
-				<div class="card text-center">
-					<div class="card-header card-title">
-						<h3>Empresas</h3>
-					</div>
-					<div class="card-body">
-
-						<p class="card-text">Módulo responsável pelas empresas parceiras da
-							agência de RH.</p>
-						<a href="#" class="btn btn-primary">Listar
-							Empresas</a> <a href="#"
-							class="btn btn-success">Cadastrar Empresa</a>
-					</div>
-				</div>
-			</div>
-			
-			</div>
-		</div>
-		</div>
-
-
-	<div style="height: 100px;"></div>
-
-
-	<div class="footer-copyright fixed-bottom bg-dark text-center py-3">
-		<span class="text-light align-middle">| App RH - UC 12 | - ©
-			2022 Copyright: CTM Supervisão de Educação Online</span>
-	</div>
-
-	<!--JavaScript bootstrap-->
-	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous">
 		
-	</script>
+
+		<div style="height: 100px;"></div>
+
+
+		<div class="footer-copyright fixed-bottom bg-dark text-center py-3">
+			<span class="text-light align-middle">| App RH - UC 12 | - ©
+				2022 Copyright: CTM Supervisão de Educação Online</span>
+		</div>
+
+		<!--JavaScript bootstrap-->
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous">
+			
+		</script>
 </body>
 
 </html>
